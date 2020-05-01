@@ -34,3 +34,8 @@ code {
 .App-link {
   color: #09d3ac;
 }
+
+svg {
+  background: rgb(209, 208, 208);
+  overflow: visible;
+}
