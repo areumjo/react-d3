@@ -50,6 +50,21 @@ function App() {
         .attr("x", (value, index) => xScale(index))
         .attr("y", -150)
         .attr("width", xScale.bandwidth())
+        .on("mouseenter", (value, index) => {
+            // console.log(value, index)
+            svg
+                .selectAll(".tooltip")
+                .data([value])
+                .join(enter => enter.append("text").attr("y", yScale(value)-2))
+                .attr("class", "tooltip")
+                .text(value)
+                .attr("text-anchor", "middle")
+                .attr("x", xScale(index) + xScale.bandwidth() / 2)
+                .transition()
+                .attr("y", yScale(value) - 5)
+                .attr("opacity", 1)
+        })
+        .on("mouseleave", () => svg.select(".tooltip").remove())
         .transition() // for animation
         .attr("height", value => 150 - yScale(value))
         .attr("fill", colorScale); // putting this after transition() willl give `animated` color change
@@ -70,6 +85,9 @@ function App() {
             </button>
             <button onClick={() => setData(data.filter(value => value < 35))}>
             Filter data
+            </button>
+            <button onClick={() => setData([...data, Math.round(Math.random() * 100)])}>
+            Add data
             </button>
             <br />
         </div>

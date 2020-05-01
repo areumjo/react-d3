@@ -75,9 +75,9 @@ function App() {
           Filter data
         </button>
         <br />
-           
+        <BarChart />
+          
       </div>
-      <BarChart />
     </div>
   );
 }
