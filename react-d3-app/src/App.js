@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import { select, line, curveCardinal, axisBottom, axisRight, scaleLinear } from "d3";
+import BarChart from "./BarChart.js";
 
 function App() {
   const [data, setData] = useState([75, 30, 45, 60, 20, 56, 33, 1, 30]);
@@ -74,9 +75,9 @@ function App() {
           Filter data
         </button>
         <br />
-        
-          
+           
       </div>
+      <BarChart />
     </div>
   );
 }
